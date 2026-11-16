@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nithishkumar Thangavelu — AI Data Analyst &amp; Data Annotation QA Portfolio</title>
+  <title>Nithishkumar Thangavelu — Embodied AI &amp; Robotics Data Specialist | Dataset QA Portfolio</title>
   <style>
     /* ==================== CSS VARIABLES & THEME TOKENS ==================== */
     :root {
@@ -21,6 +21,8 @@
       --accent-border: rgba(5, 150, 105, 0.28);
       --sky: #0284c7;
       --sky-soft: rgba(2, 132, 199, 0.1);
+      --violet: #7c3aed;
+      --violet-soft: rgba(124, 58, 237, 0.1);
       --amber: #d97706;
       --amber-soft: rgba(217, 119, 6, 0.1);
       --rose: #e11d48;
@@ -49,6 +51,8 @@
       --accent-border: rgba(16, 185, 129, 0.32);
       --sky: #38bdf8;
       --sky-soft: rgba(56, 189, 248, 0.12);
+      --violet: #a78bfa;
+      --violet-soft: rgba(167, 139, 250, 0.14);
       --amber: #fbbf24;
       --amber-soft: rgba(251, 191, 36, 0.12);
       --rose: #fb7185;
@@ -90,9 +94,18 @@
       cursor: pointer;
     }
 
+    code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: var(--bg-subtle);
+      padding: 2px 6px;
+      border-radius: 5px;
+      border: 1px solid var(--border);
+    }
+
     .container {
       width: 100%;
-      max-width: 1120px;
+      max-width: 1140px;
       margin: 0 auto;
       padding: 0 20px;
     }
@@ -161,7 +174,7 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 20px;
       font-size: 0.9rem;
       font-weight: 500;
       color: var(--text-muted);
@@ -221,7 +234,7 @@
 
     /* ==================== HERO SECTION ==================== */
     .hero {
-      padding: 56px 0 44px;
+      padding: 54px 0 42px;
     }
 
     .hero-top-row {
@@ -260,7 +273,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 800;
       letter-spacing: -0.03em;
       line-height: 1.12;
@@ -268,15 +281,15 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      font-weight: 600;
+      font-size: clamp(1.05rem, 2vw, 1.28rem);
+      font-weight: 700;
       color: var(--accent);
       margin-bottom: 16px;
     }
 
     .hero-summary {
-      max-width: 760px;
-      font-size: 1.02rem;
+      max-width: 820px;
+      font-size: 1.01rem;
       color: var(--text-muted);
       margin-bottom: 26px;
     }
@@ -301,7 +314,7 @@
       font-weight: 700;
       font-size: 0.9rem;
       border: 1px solid transparent;
-      transition: background-color 0.15s ease, transform 0.1s ease;
+      transition: background-color 0.15s ease;
     }
 
     html.dark .btn-primary {
@@ -348,11 +361,11 @@
     }
 
     .metric-value {
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: var(--accent);
       font-family: var(--font-mono);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .metric-label {
@@ -396,7 +409,233 @@
     .section-desc {
       font-size: 0.95rem;
       color: var(--text-muted);
-      max-width: 620px;
+      max-width: 640px;
+    }
+
+    /* ==================== TECHNICAL STACK & QA METHODOLOGY ==================== */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .skill-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .skill-card h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 9px;
+      border-radius: 7px;
+      background: var(--bg-subtle);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .methodology-box {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+    }
+
+    .methodology-box h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .method-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .method-step {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 15px;
+    }
+
+    .method-num {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .method-step h4 {
+      font-size: 0.93rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .method-step p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    /* ==================== PROJECTS & FILTERS ==================== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 13px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--bg-elevated);
+      color: var(--text-muted);
+      font-size: 0.83rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
+
+    .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    html.dark .filter-btn.active {
+      color: #020617;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-border);
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-cat {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+    }
+
+    .cat-robotics {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .cat-rlhf {
+      background: var(--violet-soft);
+      color: var(--violet);
+    }
+
+    .cat-cv {
+      background: var(--sky-soft);
+      color: var(--sky);
+    }
+
+    .cat-nlp {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .project-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .project-metric {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      background: var(--bg-subtle);
+      padding: 10px 12px;
+      border-radius: 10px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .inspect-btn {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--accent-border);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .inspect-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    html.dark .inspect-btn:hover {
+      color: #020617;
     }
 
     /* ==================== WORK EXPERIENCE TIMELINE ==================== */
@@ -491,227 +730,6 @@
       font-weight: 700;
     }
 
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-    }
-
-    .tech-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      padding: 4px 9px;
-      border-radius: 7px;
-      background: var(--bg-subtle);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-    }
-
-    /* ==================== PROJECTS & FILTERS ==================== */
-    .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .filter-btn {
-      padding: 8px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: var(--bg-elevated);
-      color: var(--text-muted);
-      font-size: 0.84rem;
-      font-weight: 600;
-      transition: all 0.15s ease;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--accent);
-      color: var(--text);
-    }
-
-    .filter-btn.active {
-      background: var(--accent);
-      border-color: var(--accent);
-      color: #ffffff;
-    }
-
-    html.dark .filter-btn.active {
-      color: #020617;
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .project-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: var(--shadow-sm);
-      transition: transform 0.15s ease, border-color 0.15s ease;
-    }
-
-    .project-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-border);
-    }
-
-    .project-card.hidden {
-      display: none;
-    }
-
-    .project-cat {
-      display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 4px 9px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-    }
-
-    .cat-cv {
-      background: var(--sky-soft);
-      color: var(--sky);
-    }
-
-    .cat-nlp {
-      background: var(--amber-soft);
-      color: var(--amber);
-    }
-
-    .cat-speech {
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-
-    .project-card h3 {
-      font-size: 1.08rem;
-      font-weight: 800;
-      line-height: 1.35;
-      margin-bottom: 10px;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .project-metric {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-      background: var(--bg-subtle);
-      padding: 10px 12px;
-      border-radius: 10px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-    }
-
-    .inspect-btn {
-      width: 100%;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: 1px solid var(--accent-border);
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      transition: background-color 0.15s ease, color 0.15s ease;
-    }
-
-    .inspect-btn:hover {
-      background: var(--accent);
-      color: #ffffff;
-    }
-
-    html.dark .inspect-btn:hover {
-      color: #020617;
-    }
-
-    /* ==================== SKILLS & QA METHODOLOGY ==================== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-bottom: 24px;
-    }
-
-    .skill-card {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 20px;
-      box-shadow: var(--shadow-sm);
-    }
-
-    .skill-card h3 {
-      font-size: 1rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .methodology-box {
-      background: var(--bg-elevated);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-    }
-
-    .methodology-box h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .method-steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .method-step {
-      background: var(--bg-subtle);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      padding: 15px;
-    }
-
-    .method-num {
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-
-    .method-step h4 {
-      font-size: 0.94rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .method-step p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
     /* ==================== EDUCATION & LOCATION ==================== */
     .edu-grid {
       display: grid;
@@ -804,7 +822,7 @@
 
     .contact-banner p {
       color: #cbd5e1;
-      max-width: 650px;
+      max-width: 680px;
       font-size: 0.96rem;
       margin-bottom: 22px;
     }
@@ -890,7 +908,7 @@
       position: fixed;
       inset: 0;
       z-index: 60;
-      background: rgba(2, 6, 23, 0.72);
+      background: rgba(2, 6, 23, 0.74);
       display: none;
       align-items: center;
       justify-content: center;
@@ -907,7 +925,7 @@
       border: 1px solid var(--border-strong);
       border-radius: var(--radius-xl);
       width: 100%;
-      max-width: 740px;
+      max-width: 780px;
       max-height: 88vh;
       display: flex;
       flex-direction: column;
@@ -948,7 +966,7 @@
       background: #0f172a;
       color: #e2e8f0;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.79rem;
       line-height: 1.55;
       padding: 16px;
       border-radius: 12px;
@@ -968,7 +986,7 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       font-family: var(--font-mono);
-      font-size: 0.82rem;
+      font-size: 0.81rem;
       line-height: 1.6;
     }
 
@@ -985,7 +1003,7 @@
     .asr-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
     }
 
     .asr-table th, .asr-table td {
@@ -998,6 +1016,38 @@
     .asr-table th {
       background: var(--bg-subtle);
       font-weight: 700;
+    }
+
+    .rlhf-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 16px;
+      margin-bottom: 12px;
+    }
+
+    .rlhf-card h4 {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .rlhf-axes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.84rem;
+    }
+
+    .rlhf-axes li {
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
     }
 
     /* ==================== TOAST NOTIFICATION ==================== */
@@ -1026,22 +1076,17 @@
     }
 
     /* ==================== RESPONSIVE & PRINT STYLES ==================== */
-    @media (max-width: 900px) {
-      .projects-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .metrics-grid {
+    @media (max-width: 960px) {
+      .metrics-grid,
+      .method-steps {
         grid-template-columns: repeat(2, 1fr);
       }
       .edu-grid {
         grid-template-columns: 1fr;
       }
-      .method-steps {
-        grid-template-columns: 1fr;
-      }
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 720px) {
       .nav-links {
         display: none;
       }
@@ -1049,7 +1094,8 @@
         display: inline-flex;
       }
       .projects-grid,
-      .skills-grid {
+      .skills-grid,
+      .method-steps {
         grid-template-columns: 1fr;
       }
       .contact-banner {
@@ -1086,9 +1132,9 @@
       </a>
 
       <nav class="nav-links" aria-label="Primary Navigation">
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
         <a href="#skills">Skills &amp; QA</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1108,9 +1154,9 @@
     </div>
 
     <div class="mobile-drawer no-print" id="mobileDrawer">
-      <a href="#experience" onclick="closeMobileMenu()">Experience</a>
-      <a href="#projects" onclick="closeMobileMenu()">Projects</a>
       <a href="#skills" onclick="closeMobileMenu()">Skills &amp; QA</a>
+      <a href="#projects" onclick="closeMobileMenu()">Projects</a>
+      <a href="#experience" onclick="closeMobileMenu()">Experience</a>
       <a href="#education" onclick="closeMobileMenu()">Education</a>
       <a href="#contact" onclick="closeMobileMenu()">Contact</a>
     </div>
@@ -1124,17 +1170,17 @@
       <div class="hero-top-row">
         <span class="pill pill-accent">
           <span class="pulse-dot"></span>
-          Open to AI Data Operations &amp; QA Roles
+          Available for Embodied AI, Robotics Data Ops &amp; Dataset QA Roles • Coimbatore, TN
         </span>
         <span class="pill">
-          📍 Coimbatore, Tamil Nadu, India
+          📍 Coimbatore, Tamil Nadu, India (Open to On-Site, Hybrid &amp; Remote)
         </span>
       </div>
 
       <h1>NITHISHKUMAR THANGAVELU</h1>
-      <p class="hero-subtitle">AI Data Analyst &amp; Data Annotation Specialist | Computer Vision, NLP &amp; Dataset QA</p>
+      <p class="hero-subtitle">Embodied AI &amp; Robotics Data Specialist | Multimodal Video, Trajectory RLHF &amp; Dataset QA</p>
       <p class="hero-summary">
-        Detail-oriented AI Data Operations &amp; Quality Assurance Specialist with hands-on industry experience at <strong>Objectways Technology</strong> and a technical foundation in front-end web development. Specialized in high-precision Computer Vision labeling (<strong>CVAT</strong>, <strong>Encord</strong>), HTML/text PII entity auditing, bilingual English–Tamil speech normalization, and strict SOP compliance—consistently achieving <strong>98%+ QA acceptance accuracy</strong>.
+        AI Data Operations &amp; Quality Assurance Specialist experienced in preparing and auditing datasets for <strong>Vision-Language-Action (VLA)</strong> robotics models, Computer Vision, and NLP pipelines at <strong>Objectways Technology</strong>. Skilled in dense human household action captioning, VLM auto-caption hallucination auditing, frame-level temporal action segmentation across multi-camera <code>.mcap</code> teleoperation episodes, object/surface affordance tagging, and <strong>Encord Trajectory Preference RLHF</strong> evaluations across 5 evidence-backed axes—consistently maintaining a <strong>98.5%+ QA acceptance rate</strong>.
       </p>
 
       <div class="hero-actions no-print">
@@ -1155,21 +1201,211 @@
       <!-- Key Metrics Strip -->
       <div class="metrics-grid">
         <div class="metric-card">
-          <div class="metric-value">98%+</div>
-          <div class="metric-label">QA Acceptance Accuracy</div>
+          <div class="metric-value">98.5%+</div>
+          <div class="metric-label">QA Acceptance Rate</div>
         </div>
         <div class="metric-card">
-          <div class="metric-value">CV + NLP</div>
-          <div class="metric-label">Multi-Modal Dataset Pipelines</div>
+          <div class="metric-value">12,000+</div>
+          <div class="metric-label">Frame Multi-Camera Episodes</div>
         </div>
         <div class="metric-card">
-          <div class="metric-value">EN / TA</div>
-          <div class="metric-label">Bilingual Speech &amp; Text QA</div>
+          <div class="metric-value">5-Axis</div>
+          <div class="metric-label">Trajectory RLHF Evaluation</div>
         </div>
         <div class="metric-card">
-          <div class="metric-value">MCA</div>
-          <div class="metric-label">Computer Applications Postgraduate</div>
+          <div class="metric-value">VLA + CV</div>
+          <div class="metric-label">Multimodal AI Datasets</div>
         </div>
+      </div>
+    </section>
+
+    <!-- TECHNICAL STACK & QA METHODOLOGY SECTION -->
+    <section id="skills" class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Core Competencies</div>
+          <h2 class="section-title">Technical Stack &amp; QA Methodology</h2>
+        </div>
+        <p class="section-desc">Specialized tooling, robotics telemetry schemas, and quality-assurance rubrics for Embodied AI, Vision, and NLP.</p>
+      </div>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>🤖 Embodied AI &amp; Robotics Video</h3>
+          <div class="tag-row">
+            <span class="tech-tag">Temporal Action Segmentation</span>
+            <span class="tech-tag">pick / transport / place / hold / push / idle</span>
+            <span class="tech-tag">Multi-Camera .mcap Logs</span>
+            <span class="tech-tag">Object, Location &amp; Surface Tagging</span>
+            <span class="tech-tag">Manipulation Quality Labeling</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>🧠 Multimodal Captioning &amp; RLHF</h3>
+          <div class="tag-row">
+            <span class="tech-tag">Dense Household Action Captioning</span>
+            <span class="tech-tag">VLM Auto-Caption Auditing</span>
+            <span class="tech-tag">Encord Trajectory Preference (v1.2)</span>
+            <span class="tech-tag">Chronological A vs. B Narratives</span>
+            <span class="tech-tag">5-Axis Evidence Rubrics</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>🎯 Computer Vision &amp; NLP Platforms</h3>
+          <div class="tag-row">
+            <span class="tech-tag">Encord</span>
+            <span class="tech-tag">CVAT</span>
+            <span class="tech-tag">Label Studio</span>
+            <span class="tech-tag">Labelbox</span>
+            <span class="tech-tag">HTML PII Entity Span Auditing</span>
+            <span class="tech-tag">English–Tamil ASR Normalization</span>
+          </div>
+        </div>
+
+        <div class="skill-card">
+          <h3>📊 Data Formats &amp; QA Metrics</h3>
+          <div class="tag-row">
+            <span class="tech-tag">JSON</span>
+            <span class="tech-tag">COCO</span>
+            <span class="tech-tag">YOLO</span>
+            <span class="tech-tag">.mcap Telemetry Validation</span>
+            <span class="tech-tag">IoU (Intersection over Union)</span>
+            <span class="tech-tag">IAA / Cohen’s Kappa</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="methodology-box">
+        <h3>Four-Step Dataset Quality Assurance Methodology</h3>
+        <div class="method-steps">
+          <div class="method-step">
+            <div class="method-num">STEP 01</div>
+            <h4>Guideline-First Execution</h4>
+            <p>Deconstruct project SOPs into concrete frame-boundary, affordance, and occlusion rules before labeling.</p>
+          </div>
+          <div class="method-step">
+            <div class="method-num">STEP 02</div>
+            <h4>Frame &amp; Span Precision</h4>
+            <p>Audit VLM auto-captions and model pre-labels against raw visual frames—catching hand swaps, contact drift, and boundary errors.</p>
+          </div>
+          <div class="method-step">
+            <div class="method-num">STEP 03</div>
+            <h4>Evidence-Backed RLHF Reasoning</h4>
+            <p>Tie every preference score to observable events (dropped items, arm oscillation, wasted retries) rather than generic labels.</p>
+          </div>
+          <div class="method-step">
+            <div class="method-num">STEP 04</div>
+            <h4>Automated JSON Sanity Checks</h4>
+            <p>Verify exported JSON files for contiguous frame intervals, schema consistency, and clean class names prior to delivery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PORTFOLIO PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">NDA-Safe Synthetic &amp; Sample Artifacts</div>
+          <h2 class="section-title">Featured Portfolio Projects</h2>
+        </div>
+
+        <div class="filter-bar no-print" role="group" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('robotics', this)">Robotics &amp; VLA</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('rlhf', this)">RLHF Evaluation</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('cv', this)">Computer Vision</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('nlp', this)">NLP &amp; Speech</button>
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card" data-category="robotics">
+          <div>
+            <span class="project-cat cat-robotics">Robotics &amp; VLA • Temporal Segmentation</span>
+            <h3>Bimanual Teleoperation Temporal Action Segmentation &amp; Quality QA</h3>
+            <p>
+              Performed frame-accurate atomic action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) across synchronized multi-camera (<code>cam-0</code>, <code>cam-1</code>) manipulation episodes, pairing left/right gripper sub-tasks with <code>Good</code>/<code>Bad</code> trajectory quality spans.
+            </p>
+            <div class="project-metric">
+              Deliverable: Zero-gap frame interval JSON export validated for left/right bimanual synchronization.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('robotics_seg')">
+            🔍 Inspect Sample Artifact (Telemetry JSON)
+          </button>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" data-category="robotics">
+          <div>
+            <span class="project-cat cat-robotics">Robotics &amp; VLA • Caption &amp; Affordance QA</span>
+            <h3>Household Manipulation Dense Captioning &amp; Auto-Caption Audit</h3>
+            <p>
+              Authored fine-grained step-by-step action captions specifying actor hand, target object, spatial location, and interaction surface for robot policy training, while auditing VLM auto-generated captions to eliminate hand-swap and contact hallucinations.
+            </p>
+            <div class="project-metric">
+              Deliverable: Side-by-side VLM error audit rubric &amp; grounded object/surface affordance metadata.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('robotics_cap')">
+            🔍 Inspect Sample Artifact (Caption Audit Table)
+          </button>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" data-category="rlhf">
+          <div>
+            <span class="project-cat cat-rlhf">RLHF Evaluation • Encord 5-Axis Rubric</span>
+            <h3>Robot Trajectory Preference RLHF Benchmark (5-Axis Rubric)</h3>
+            <p>
+              Conducted side-by-side policy evaluations comparing Robot Attempt A vs. Attempt B—authoring chronological action narratives followed by concrete, evidence-tied justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code>.
+            </p>
+            <div class="project-metric">
+              Deliverable: Structured 5-axis trajectory evaluation log with edge-case &amp; extra-axis diagnostics.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('rlhf')">
+            🔍 Inspect Sample Artifact (5-Axis Evaluation)
+          </button>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" data-category="cv">
+          <div>
+            <span class="project-cat cat-cv">Computer Vision • CVAT</span>
+            <h3>Autonomous Driving Multi-Object Detection &amp; Occlusion QA</h3>
+            <p>
+              Annotated urban traffic street-view frames for vehicles, pedestrians, two-wheelers, and traffic signage using tight 2D bounding boxes and polygon masks in <strong>CVAT</strong>, strictly enforcing multi-part occlusion rules and exporting clean COCO JSON.
+            </p>
+            <div class="project-metric">
+              Deliverable: 98.5%+ IoU precision after auditing AI pre-labels &amp; occluded vehicle boundaries.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('cv')">
+            🔍 Inspect Sample Artifact (COCO JSON)
+          </button>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card" data-category="nlp">
+          <div>
+            <span class="project-cat cat-nlp">NLP &amp; Speech • PII &amp; Bilingual ASR</span>
+            <h3>HTML PII Span Precision Audit &amp; Bilingual (English/Tamil) Normalization</h3>
+            <p>
+              Audited unstructured HTML support logs for <code>[PERSON]</code>, <code>[PHONE]</code>, and <code>[EMAIL]</code> boundary precision (stripping honorifics and trailing punctuation) and structured English spoken-digit patterns with native <strong>Tamil script</strong> ASR transcripts.
+            </p>
+            <div class="project-metric">
+              Deliverable: HTML span QA diff log &amp; standardized code-mixed English–Tamil numeric transcripts.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('nlp')">
+            🔍 Inspect Sample Artifact (PII Diff &amp; Tamil ASR)
+          </button>
+        </article>
       </div>
     </section>
 
@@ -1180,7 +1416,7 @@
           <div class="section-kicker">Career History</div>
           <h2 class="section-title">Work Experience</h2>
         </div>
-        <p class="section-desc">Production experience delivering high-accuracy AI training datasets and clean front-end web interfaces.</p>
+        <p class="section-desc">Industry experience delivering Embodied AI, Robotics, Computer Vision, and NLP datasets alongside front-end engineering.</p>
       </div>
 
       <div class="timeline">
@@ -1188,7 +1424,7 @@
         <article class="exp-card featured">
           <div class="exp-top">
             <div>
-              <h3 class="exp-role">Data Analyst</h3>
+              <h3 class="exp-role">Data Analyst (AI Data Operations &amp; Robotics Dataset QA)</h3>
               <div class="exp-company">Objectways Technology</div>
             </div>
             <div class="exp-meta">
@@ -1197,18 +1433,19 @@
             </div>
           </div>
           <ul class="exp-list">
-            <li>Prepare, annotate, and audit enterprise AI training datasets across Computer Vision, Natural Language Processing (NLP), and Automatic Speech Recognition (ASR) workflows.</li>
-            <li>Execute tight 2D bounding boxes, polygon segmentation masks, and multi-part occlusion labeling in <strong>CVAT</strong> and <strong>Encord</strong>, auditing AI-generated pre-labels to maintain <strong>98%+ QA acceptance accuracy</strong>.</li>
-            <li>Perform HTML and unstructured text span auditing for Personally Identifiable Information (PII), resolving boundary drift, nested tags, and punctuation edge cases under strict client SOP guidelines.</li>
-            <li>Standardize bilingual <strong>English–Tamil</strong> conversational transcripts and numeric digit sequences, flagging ambiguous edge cases with clear QA rationales to protect Inter-Annotator Agreement (IAA) scores.</li>
+            <li>Author dense, step-by-step household manipulation captions and audit VLM auto-generated video descriptions—correcting left/right hand confusion, premature grasp hallucinations, and missed interaction surfaces to train Vision-Language-Action (VLA) robotics models.</li>
+            <li>Execute frame-level temporal action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) and manipulation quality labeling across 12,000+ frame multi-camera <code>.mcap</code> bimanual teleoperation episodes.</li>
+            <li>Tag object identities, spatial locations, and target interaction surfaces to ground robotic affordance and scene-understanding pipelines.</li>
+            <li>Perform side-by-side Robot Trajectory Preference RLHF evaluations in <strong>Encord</strong> (v1.2 SOP), writing chronological A/B action descriptions and evidence-backed justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code>.</li>
+            <li>Deliver high-precision 2D bounding boxes and polygon segmentation masks in <strong>CVAT</strong> and <strong>Encord</strong> (98.5%+ QA acceptance), alongside HTML PII entity span auditing and bilingual <strong>English–Tamil</strong> speech normalization.</li>
           </ul>
           <div class="tag-row">
-            <span class="tech-tag">CVAT</span>
             <span class="tech-tag">Encord</span>
-            <span class="tech-tag">Computer Vision QA</span>
-            <span class="tech-tag">HTML / PII Span Tagging</span>
-            <span class="tech-tag">English–Tamil ASR</span>
-            <span class="tech-tag">SOP &amp; IAA Auditing</span>
+            <span class="tech-tag">CVAT</span>
+            <span class="tech-tag">VLA Action Captioning</span>
+            <span class="tech-tag">Temporal Segmentation (.mcap)</span>
+            <span class="tech-tag">Trajectory RLHF (5-Axis)</span>
+            <span class="tech-tag">HTML PII &amp; EN–TA ASR</span>
           </div>
         </article>
 
@@ -1226,166 +1463,17 @@
           </div>
           <ul class="exp-list">
             <li>Built responsive, mobile-first web interfaces and reusable UI components using semantic <strong>HTML5</strong>, modern <strong>CSS3</strong>, and vanilla <strong>JavaScript</strong>.</li>
-            <li>Collaborated on cross-browser layout optimization, DOM structure cleanup, and accessibility improvements—building strong fluency in HTML markup structure directly applicable to HTML entity annotation.</li>
-            <li>Maintained clean, well-documented codebases and adhered to structured design specifications and peer review checklists.</li>
+            <li>Performed cross-browser debugging, DOM structure cleanup, and accessibility improvements—developing deep fluency in HTML markup hierarchy directly leveraged in HTML PII span auditing.</li>
+            <li>Maintained clean, well-commented codebases following structured design specifications and peer QA checklists.</li>
           </ul>
           <div class="tag-row">
             <span class="tech-tag">HTML5</span>
             <span class="tech-tag">CSS3</span>
             <span class="tech-tag">JavaScript</span>
             <span class="tech-tag">Responsive UI</span>
-            <span class="tech-tag">DOM &amp; Markup Structure</span>
+            <span class="tech-tag">Cross-Browser Debugging</span>
           </div>
         </article>
-      </div>
-    </section>
-
-    <!-- FEATURED PORTFOLIO PROJECTS SECTION -->
-    <section id="projects" class="section">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">QA &amp; Annotation Samples</div>
-          <h2 class="section-title">Featured Portfolio Projects</h2>
-        </div>
-
-        <div class="filter-bar no-print" role="group" aria-label="Filter projects by category">
-          <button type="button" class="filter-btn active" onclick="filterProjects('all', this)">All</button>
-          <button type="button" class="filter-btn" onclick="filterProjects('cv', this)">Computer Vision</button>
-          <button type="button" class="filter-btn" onclick="filterProjects('nlp', this)">NLP &amp; PII</button>
-          <button type="button" class="filter-btn" onclick="filterProjects('speech', this)">Bilingual Speech</button>
-        </div>
-      </div>
-
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <article class="project-card" data-category="cv">
-          <div>
-            <span class="project-cat cat-cv">Computer Vision • CVAT</span>
-            <h3>Autonomous Driving Multi-Object Detection &amp; Occlusion QA</h3>
-            <p>
-              Annotated 100 urban traffic street-view frames for vehicles, pedestrians, two-wheelers, and traffic signage using tight 2D bounding boxes and polygon masks in <strong>CVAT</strong>, strictly enforcing multi-part occlusion rules.
-            </p>
-            <div class="project-metric">
-              Deliverable: 98.5%+ IoU precision after auditing model pre-labels &amp; exporting clean COCO JSON.
-            </div>
-          </div>
-          <button type="button" class="inspect-btn no-print" onclick="openArtifact('cv')">
-            🔍 Inspect Sample Artifact (COCO JSON)
-          </button>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card" data-category="nlp">
-          <div>
-            <span class="project-cat cat-nlp">NLP &amp; PII • HTML Span Audit</span>
-            <h3>HTML Document PII Redaction &amp; Span Precision Audit</h3>
-            <p>
-              Audited 150 unstructured HTML customer-support records for <code>[PERSON]</code>, <code>[PHONE]</code>, <code>[EMAIL]</code>, and <code>[ID]</code> entities—eliminating honorific prefixes, trailing punctuation drift, and missed nested spans.
-            </p>
-            <div class="project-metric">
-              Deliverable: Standardized boundary-rule QA diff log reducing false-negative entity misses.
-            </div>
-          </div>
-          <button type="button" class="inspect-btn no-print" onclick="openArtifact('nlp')">
-            🔍 Inspect Sample Artifact (HTML QA Diff)
-          </button>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card" data-category="speech">
-          <div>
-            <span class="project-cat cat-speech">Bilingual Speech • EN / TA</span>
-            <h3>Bilingual Speech-to-Text Digit Normalization (English &amp; Tamil)</h3>
-            <p>
-              Structured 200+ conversational customer-service ASR utterances pairing spoken English digit sequences with native <strong>Tamil script</strong> text, enforcing strict formatting rules for phone numbers and currency.
-            </p>
-            <div class="project-metric">
-              Deliverable: Zero formatting drift across spoken-to-written numeric patterns for ASR training.
-            </div>
-          </div>
-          <button type="button" class="inspect-btn no-print" onclick="openArtifact('speech')">
-            🔍 Inspect Sample Artifact (EN–TA Table)
-          </button>
-        </article>
-      </div>
-    </section>
-
-    <!-- TECHNICAL STACK & QA METHODOLOGY SECTION -->
-    <section id="skills" class="section">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Core Competencies</div>
-          <h2 class="section-title">Technical Stack &amp; QA Methodology</h2>
-        </div>
-        <p class="section-desc">Tools, data standards, and quality-assurance workflows used to deliver model-ready datasets.</p>
-      </div>
-
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>🛠️ Annotation &amp; QA Platforms</h3>
-          <div class="tag-row">
-            <span class="tech-tag">CVAT</span>
-            <span class="tech-tag">Encord</span>
-            <span class="tech-tag">Label Studio</span>
-            <span class="tech-tag">Labelbox</span>
-            <span class="tech-tag">Pre-Label Auditing</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>🎯 Computer Vision, NLP &amp; RLHF</h3>
-          <div class="tag-row">
-            <span class="tech-tag">2D Bounding Boxes</span>
-            <span class="tech-tag">Polygon Segmentation</span>
-            <span class="tech-tag">Occlusion Handling</span>
-            <span class="tech-tag">PII Entity Span Tagging</span>
-            <span class="tech-tag">RLHF Side-by-Side Evaluation</span>
-            <span class="tech-tag">English–Tamil Normalization</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>💻 Web &amp; Dataset Formats</h3>
-          <div class="tag-row">
-            <span class="tech-tag">JSON</span>
-            <span class="tech-tag">COCO Format</span>
-            <span class="tech-tag">YOLO Format</span>
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JavaScript</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>📊 Quality Assurance Metrics</h3>
-          <div class="tag-row">
-            <span class="tech-tag">IoU (Intersection over Union)</span>
-            <span class="tech-tag">Cohen’s Kappa / IAA</span>
-            <span class="tech-tag">Precision &amp; Recall Auditing</span>
-            <span class="tech-tag">Edge-Case SOP Documentation</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="methodology-box">
-        <h3>Three-Step Dataset Quality Assurance Methodology</h3>
-        <div class="method-steps">
-          <div class="method-step">
-            <div class="method-num">STEP 01</div>
-            <h4>Guideline-First Breakdown</h4>
-            <p>Translate project SOPs into explicit boundary and occlusion rules before annotating the first frame or token.</p>
-          </div>
-          <div class="method-step">
-            <div class="method-num">STEP 02</div>
-            <h4>Zero-Trust Pre-Label Audit</h4>
-            <p>Treat automated model predictions as rough drafts—verify every polygon vertex and character offset manually.</p>
-          </div>
-          <div class="method-step">
-            <div class="method-num">STEP 03</div>
-            <h4>Structured Edge-Case Escalation</h4>
-            <p>Flag ambiguous samples with reproducible QA notes rather than guessing, safeguarding team-wide IAA consistency.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -1403,13 +1491,13 @@
           <article class="edu-card">
             <div class="edu-degree">Master of Computer Applications (MCA)</div>
             <div class="edu-college">Sree Saraswathi Thyagaraja College (Autonomous)</div>
-            <div class="edu-sub">Pollachi • Affiliated to Bharathiar University, Coimbatore, Tamil Nadu</div>
+            <div class="edu-sub">Affiliated to Bharathiar University, Coimbatore, Tamil Nadu</div>
           </article>
 
           <article class="edu-card">
             <div class="edu-degree">Bachelor of Science (B.Sc.) in Computer Science</div>
             <div class="edu-college">Sree Saraswathi Thyagaraja College (Autonomous)</div>
-            <div class="edu-sub">Pollachi • Affiliated to Bharathiar University, Coimbatore, Tamil Nadu</div>
+            <div class="edu-sub">Affiliated to Bharathiar University, Coimbatore, Tamil Nadu</div>
           </article>
         </div>
 
@@ -1418,7 +1506,7 @@
             <h3>📍 Location &amp; Availability</h3>
             <div class="location-city">Coimbatore, Tamil Nadu, India</div>
             <p>
-              Available for full-time on-site roles in Coimbatore / Tamil Nadu, hybrid schedules, or global remote AI Data Operations, Dataset QA, and Data Analyst opportunities.
+              Available for full-time on-site roles in Coimbatore / Tamil Nadu, hybrid schedules, or global remote Embodied AI, Robotics Data Operations, and Dataset QA opportunities.
             </p>
           </div>
           <div class="avail-list">
@@ -1433,9 +1521,9 @@
     <!-- CONTACT SECTION -->
     <section id="contact" class="section">
       <div class="contact-banner">
-        <h2>Let’s Connect for AI Data Operations &amp; QA Roles</h2>
+        <h2>Let’s Connect for Embodied AI &amp; Dataset QA Roles</h2>
         <p>
-          Looking for a detail-driven Data Analyst or Dataset QA Specialist experienced in CVAT, Encord, Computer Vision, HTML PII auditing, and English–Tamil NLP workflows? Reach out directly via Gmail or connect on LinkedIn and GitHub.
+          Hiring for Robotics Data Operations, VLA Multimodal Video Annotation, Trajectory RLHF Evaluation, or Dataset QA? Reach out directly via Gmail or connect on LinkedIn and GitHub.
         </p>
 
         <div class="contact-actions no-print">
@@ -1559,13 +1647,81 @@
       });
     }
 
-    // 4. Inspectable Sample Artifact Modal
+    // 4. Inspectable NDA-Safe Synthetic Sample Artifacts
     const ARTIFACTS = {
+      robotics_seg: {
+        title: 'Synthetic Sample — Bimanual Temporal Action Segmentation JSON',
+        html:
+          '<p style="margin-bottom:12px;color:var(--text-muted);">' +
+          '<strong>QA Validation Check:</strong> Contiguous frame intervals verified across synchronized <code>cam-0</code> (wrist) and <code>cam-1</code> (overhead) views with zero overlapping boundaries or trailing whitespace in taxonomy keys.' +
+          '</p>' +
+          '<div class="code-block">' +
+          '{\n' +
+          '  "episode_id": "synthetic_kitchen_towel_fold_042",\n' +
+          '  "cameras": ["cam-0_wrist_left", "cam-1_overhead"],\n' +
+          '  "total_frames": 360,\n' +
+          '  "segments": [\n' +
+          '    { "frames": "0 - 44",   "arm": "subtask_left",  "action": "idle",      "object": null,            "surface": "countertop", "quality": "Good" },\n' +
+          '    { "frames": "45 - 118", "arm": "subtask_left",  "action": "pick",      "object": "cotton_towel",  "surface": "countertop", "quality": "Good" },\n' +
+          '    { "frames": "119 - 210","arm": "subtask_left",  "action": "transport", "object": "cotton_towel",  "surface": "countertop", "quality": "Good" },\n' +
+          '    { "frames": "211 - 285","arm": "subtask_left",  "action": "place",     "object": "cotton_towel",  "surface": "folding_mat","quality": "Good" },\n' +
+          '    { "frames": "286 - 360","arm": "subtask_right", "action": "push",      "object": "folded_corner", "surface": "folding_mat","quality": "Good" }\n' +
+          '  ],\n' +
+          '  "qa_audit": { "frame_gaps": 0, "overlaps": 0, "status": "APPROVED" }\n' +
+          '}' +
+          '</div>'
+      },
+      robotics_cap: {
+        title: 'Synthetic Sample — VLM Auto-Caption Audit & Affordance Grounding',
+        html:
+          '<p style="margin-bottom:12px;color:var(--text-muted);">' +
+          '<strong>SOP Standard:</strong> Explicitly specify acting hand (left/right), grasped object, origin location, and destination surface while removing VLM hallucinated actions.' +
+          '</p>' +
+          '<table class="asr-table">' +
+          '  <thead>' +
+          '    <tr>' +
+          '      <th>Auto-Generated VLM Caption (Rejected)</th>' +
+          '      <th>Human-Audited Ground Truth Caption</th>' +
+          '      <th>Captured Affordance Metadata</th>' +
+          '    </tr>' +
+          '  </thead>' +
+          '  <tbody>' +
+          '    <tr>' +
+          '      <td>"A person picks up a cup with their right hand and pours water." <em>(Hand swap + hallucinated pouring)</em></td>' +
+          '      <td>"The actor reaches with their <strong>left hand</strong>, grasps the <strong>ceramic mug</strong> by its handle from the <strong>dish rack</strong>, and places it upright onto the <strong>wooden dining table</strong>."</td>' +
+          '      <td><strong>Object:</strong> ceramic_mug<br/><strong>Location:</strong> dish_rack → table<br/><strong>Surface:</strong> wooden_tabletop</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>"Hands move a cloth on the table." <em>(Vague action &amp; missing surface)</em></td>' +
+          '      <td>"Using both hands, the actor grasps the top corners of the <strong>microfiber cloth</strong> on the <strong>kitchen counter</strong> and folds it neatly in half toward the center."</td>' +
+          '      <td><strong>Object:</strong> microfiber_cloth<br/><strong>Location:</strong> center_counter<br/><strong>Surface:</strong> granite_countertop</td>' +
+          '    </tr>' +
+          '  </tbody>' +
+          '</table>'
+      },
+      rlhf: {
+        title: 'Synthetic Sample — Encord 5-Axis Trajectory Preference Evaluation',
+        html:
+          '<div class="rlhf-card">' +
+          '  <h4>Task Instruction &amp; Chronological Description (A vs. B)</h4>' +
+          '  <p style="font-size:0.84rem;color:var(--text-muted);">' +
+          '    <strong>Instruction:</strong> "Pick up the blue marker from the desk and place it upright inside the white pen holder."<br/><br/>' +
+          '    <strong>Chronological Narrative:</strong> Attempt A reaches toward the blue marker with steady motion, grasps the barrel on the first attempt, lifts it clear of the desk, and places it upright inside the white pen holder without touching nearby items. Attempt B approaches the marker with visible arm oscillation, misses its first grasp (knocking the marker 3 cm left), re-grasps on the second try, and drops the marker onto the desk beside the holder.' +
+          '  </p>' +
+          '</div>' +
+          '<ul class="rlhf-axes">' +
+          '  <li><strong>1. task_completion → A:</strong> Attempt A successfully placed the blue marker inside the white pen holder, whereas Attempt B left the marker lying on the desk outside the holder.</li>' +
+          '  <li><strong>2. quality → A:</strong> Attempt A secured a clean single-try grasp and upright placement, while Attempt B missed its initial grasp and failed to seat the marker in the container.</li>' +
+          '  <li><strong>3. smoothness → A:</strong> Attempt A moved along a continuous, fluid path, whereas Attempt B exhibited noticeable arm oscillation and jerky stop-start corrections during approach.</li>' +
+          '  <li><strong>4. speed_and_no_inefficiencies → A:</strong> Attempt A completed the trajectory directly in one pass, while Attempt B wasted time re-positioning after its missed initial grasp.</li>' +
+          '  <li><strong>5. no_damage_to_object_or_environment → A:</strong> Attempt A avoided unintended contact, whereas Attempt B bumped and displaced the marker during its failed first grasp.</li>' +
+          '</ul>'
+      },
       cv: {
         title: 'CVAT Computer Vision QA — Exported COCO JSON Sample',
         html:
           '<p style="margin-bottom:12px;color:var(--text-muted);">' +
-          '<strong>QA Audit Rule:</strong> Single continuous bounding box enforced across a sedan occluded by a foreground streetlight pole (<code>is_occluded: true</code>), achieving <strong>99.1% IoU</strong> against golden ground truth.' +
+          '<strong>QA Audit Rule:</strong> Single continuous bounding box enforced across a sedan occluded by a foreground streetlight pole (<code>occluded: true</code>), achieving <strong>99.1% IoU</strong> against golden ground truth.' +
           '</p>' +
           '<div class="code-block">' +
           '{\n' +
@@ -1593,43 +1749,33 @@
           '</div>'
       },
       nlp: {
-        title: 'HTML Document PII Redaction — Before & After QA Span Diff',
+        title: 'HTML PII Span QA Diff & Bilingual English–Tamil Normalization',
         html:
-          '<p style="margin-bottom:12px;color:var(--text-muted);">' +
-          '<strong>SOP Rule:</strong> Exclude honorific titles (<code>Dr.</code>, <code>Mr.</code>) and trailing punctuation (<code>.</code>) from <code>[PERSON]</code> and <code>[PHONE]</code> entity spans.' +
+          '<p style="margin-bottom:10px;color:var(--text-muted);">' +
+          '<strong>1. HTML PII Span Boundary Audit:</strong> Exclude honorific titles (<code>Dr.</code>) and trailing punctuation (<code>.</code>) from entity tags.' +
           '</p>' +
-          '<div class="diff-box">' +
+          '<div class="diff-box" style="margin-bottom:16px;">' +
           '  <div class="diff-panel diff-bad">' +
-          '    <strong>❌ Rejected Annotator Draft (Boundary Errors):</strong><br/>' +
-          '    &lt;p&gt;Contact &lt;PERSON&gt;Dr. Karthik Subramanian&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98430-55120.&lt;/PHONE&gt;&lt;/p&gt;' +
+          '    <strong>❌ Rejected Draft:</strong> &lt;p&gt;Contact &lt;PERSON&gt;Dr. Karthik Subramanian&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98430-55120.&lt;/PHONE&gt;&lt;/p&gt;' +
           '  </div>' +
           '  <div class="diff-panel diff-good">' +
-          '    <strong>✅ QA-Approved Gold Span:</strong><br/>' +
-          '    &lt;p&gt;Contact Dr. &lt;PERSON&gt;Karthik Subramanian&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98430-55120&lt;/PHONE&gt;.&lt;/p&gt;' +
+          '    <strong>✅ QA-Approved Gold:</strong> &lt;p&gt;Contact Dr. &lt;PERSON&gt;Karthik Subramanian&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98430-55120&lt;/PHONE&gt;.&lt;/p&gt;' +
           '  </div>' +
-          '</div>'
-      },
-      speech: {
-        title: 'Bilingual Speech-to-Text Digit Normalization (English & Tamil)',
-        html:
-          '<p style="margin-bottom:12px;color:var(--text-muted);">' +
-          '<strong>ASR Normalization Standard:</strong> Convert spoken English digit sequences embedded inside Tamil customer-support audio into standardized numeric groups while preserving native Tamil orthography.' +
+          '</div>' +
+          '<p style="margin-bottom:10px;color:var(--text-muted);">' +
+          '<strong>2. Bilingual English–Tamil ASR Digit Normalization:</strong>' +
           '</p>' +
           '<table class="asr-table">' +
           '  <thead>' +
           '    <tr>' +
-          '      <th>Raw Spoken Utterance (Code-Mixed Audio)</th>' +
-          '      <th>QA-Normalized ASR Ground Truth</th>' +
+          '      <th>Raw Code-Mixed Utterance</th>' +
+          '      <th>Normalized ASR Ground Truth</th>' +
           '    </tr>' +
           '  </thead>' +
           '  <tbody>' +
           '    <tr>' +
           '      <td>என்னை தொடர்பு கொள்ள nine five six seven eight three four double two zero என்ற எண்ணிற்கு அழைக்கவும்.</td>' +
           '      <td>என்னை தொடர்பு கொள்ள <strong>95678 34220</strong> என்ற எண்ணிற்கு அழைக்கவும்.</td>' +
-          '    </tr>' +
-          '    <tr>' +
-          '      <td>உங்கள் ஆர்டர் எண் four zero two eight மற்றும் கட்டணம் rupees one thousand two fifty ஆகும்.</td>' +
-          '      <td>உங்கள் ஆர்டர் எண் <strong>4028</strong> மற்றும் கட்டணம் <strong>₹1,250</strong> ஆகும்.</td>' +
           '    </tr>' +
           '  </tbody>' +
           '</table>'
