@@ -1,0 +1,1553 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nithishkumar Thangavelu | AI Data Annotator &amp; Dataset QA Specialist</title>
+  <style>
+    /* ==========================================================================
+       1. DESIGN TOKENS & THEME SYSTEM (ZERO EXTERNAL DEPENDENCIES)
+       ========================================================================== */
+    :root {
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+      /* Light Theme Defaults */
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-tertiary: #f1f5f9;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --border-strong: #cbd5e1;
+
+      --accent: #059669;
+      --accent-hover: #047857;
+      --accent-soft: rgba(5, 150, 105, 0.12);
+      --accent-border: rgba(5, 150, 105, 0.3);
+
+      --secondary-accent: #0284c7;
+      --secondary-soft: rgba(2, 132, 199, 0.12);
+
+      --danger-soft: rgba(225, 29, 72, 0.12);
+      --danger-text: #be123c;
+
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 6px 20px -4px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.16);
+
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #070b14;
+      --bg-secondary: #0f172a;
+      --bg-tertiary: #162033;
+      --bg-glass: rgba(7, 11, 20, 0.86);
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #1e293b;
+      --border-strong: #334155;
+
+      --accent: #10b981;
+      --accent-hover: #34d399;
+      --accent-soft: rgba(16, 185, 129, 0.14);
+      --accent-border: rgba(16, 185, 129, 0.35);
+
+      --secondary-accent: #38bdf8;
+      --secondary-soft: rgba(56, 189, 248, 0.14);
+
+      --danger-soft: rgba(244, 63, 94, 0.16);
+      --danger-text: #fda4af;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 8px 24px -4px rgba(0, 0, 0, 0.45);
+      --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    /* ==========================================================================
+       2. RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ==========================================================================
+       3. STICKY NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent), var(--secondary-accent));
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    .mobile-drawer {
+      display: none;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding: 1rem 1.25rem 1.25rem;
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+    }
+
+    .mobile-drawer.open {
+      display: flex;
+    }
+
+    .mobile-drawer a {
+      padding: 0.65rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .mobile-drawer a:hover {
+      background-color: var(--bg-tertiary);
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      padding: 4.5rem 0 3.5rem;
+      border-bottom: 1px solid var(--border-color);
+      background:
+        radial-gradient(circle at 12% 18%, var(--accent-soft), transparent 42%),
+        radial-gradient(circle at 88% 12%, var(--secondary-soft), transparent 42%);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      background-color: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-soft);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 4.2vw, 3.15rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.12;
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-bio {
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      max-width: 62ch;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius-md);
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-sm);
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* Metrics Card in Hero */
+    .metrics-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .metrics-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.9rem;
+      margin-bottom: 1.1rem;
+      border-bottom: 1px solid var(--border-color);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .metric-box {
+      padding: 0.95rem;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+    }
+
+    .metric-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: var(--font-mono);
+      line-height: 1.2;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       5. SECTIONS & CARDS
+       ========================================================================== */
+    .section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .section-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      max-width: 60ch;
+      font-size: 0.95rem;
+      margin-top: 0.35rem;
+    }
+
+    /* Skills Matrix */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .skill-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent-border);
+      transform: translateY(-2px);
+    }
+
+    .skill-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background-color: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .skill-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .tag {
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.45rem 0.95rem;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .filter-btn.active {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .project-card.hidden {
+      display: none;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-border);
+      box-shadow: var(--shadow-md);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-cat {
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      background-color: var(--secondary-soft);
+      color: var(--secondary-accent);
+    }
+
+    .project-kpi {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .project-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-meta {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.25rem;
+    }
+
+    .project-meta strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .project-footer {
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .artifact-btn {
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      transition: all 0.2s ease;
+    }
+
+    .artifact-btn:hover {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* Methodology Steps */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .method-card {
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--accent);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.85rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .method-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.45rem;
+    }
+
+    .method-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       6. CONTACT BANNER & FOOTER
+       ========================================================================== */
+    .contact-section {
+      padding: 4rem 0;
+    }
+
+    .contact-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+      border: 1px solid #334155;
+      border-radius: var(--radius-xl);
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-box p {
+      color: #cbd5e1;
+      max-width: 60ch;
+      font-size: 0.98rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .btn-gmail {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.3rem;
+      border-radius: var(--radius-md);
+      background-color: #10b981;
+      color: #052e16;
+      font-weight: 800;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-gmail:hover {
+      background-color: #34d399;
+    }
+
+    .btn-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.78rem 1.15rem;
+      border-radius: var(--radius-md);
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-glass:hover {
+      background-color: rgba(255, 255, 255, 0.16);
+    }
+
+    .footer {
+      border-top: 1px solid var(--border-color);
+      background-color: var(--bg-secondary);
+      padding: 2rem 0;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .footer-title {
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1.25rem;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .top-link {
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-sm);
+      background-color: var(--bg-tertiary);
+      border: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       7. ARTIFACT MODAL & TOAST NOTIFICATION
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      background-color: rgba(2, 6, 23, 0.78);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-dialog {
+      width: 100%;
+      max-width: 740px;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.4rem;
+      border-bottom: 1px solid var(--border-color);
+      background-color: var(--bg-tertiary);
+    }
+
+    .modal-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--radius-sm);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .modal-close:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .modal-body {
+      padding: 1.4rem;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+
+    .code-block {
+      background-color: #090d16;
+      color: #e2e8f0;
+      border: 1px solid #1e293b;
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      line-height: 1.55;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .diff-box {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .diff-bad {
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--danger-soft);
+      border: 1px solid rgba(225, 29, 72, 0.35);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .diff-good {
+      padding: 0.9rem 1rem;
+      border-radius: var(--radius-md);
+      background-color: var(--accent-soft);
+      border: 1px solid var(--accent-border);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .data-table th, .data-table td {
+      text-align: left;
+      padding: 0.7rem 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .data-table th {
+      background-color: var(--bg-tertiary);
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 80;
+      padding: 0.8rem 1.2rem;
+      border-radius: var(--radius-md);
+      background-color: #0f172a;
+      color: #f8fafc;
+      border: 1px solid #10b981;
+      box-shadow: var(--shadow-lg);
+      font-size: 0.88rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       8. RESPONSIVE & PRINT RULES
+       ========================================================================== */
+    @media (max-width: 860px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: inline-flex;
+      }
+      .contact-box {
+        padding: 1.75rem 1.25rem;
+      }
+    }
+
+    @media print {
+      .navbar, .no-print, .modal-backdrop, .toast {
+        display: none !important;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .section, .hero {
+        padding: 1.5rem 0 !important;
+      }
+    }
+  </style>
+</head>
+<body id="top">
+
+  <!-- ==================== NAVIGATION ==================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-badge">NT</span>
+        <span>Nithishkumar Thangavelu</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary Navigation">
+        <a href="#skills">Core Stack</a>
+        <a href="#projects">QA Portfolio</a>
+        <a href="#methodology">QA Workflow</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="themeToggle" class="icon-btn" aria-label="Toggle color theme">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Light</span>
+        </button>
+
+        <button type="button" onclick="window.print()" class="icon-btn no-print" title="Save or Print as PDF">
+          <span>Print PDF</span>
+        </button>
+
+        <button type="button" id="mobileMenuBtn" class="icon-btn mobile-menu-btn" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileDrawer" class="mobile-drawer">
+      <a href="#skills" onclick="closeMobileMenu()">Core Technical Stack</a>
+      <a href="#projects" onclick="closeMobileMenu()">Featured QA Portfolio</a>
+      <a href="#methodology" onclick="closeMobileMenu()">QA Methodology</a>
+      <a href="#contact" onclick="closeMobileMenu()">Contact &amp; Links</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="status-pill">
+            <span class="pulse-dot"></span>
+            <span>Open to Full-Time AI Data Annotation &amp; QA Roles • Tamil Nadu, India</span>
+          </div>
+
+          <h1 class="hero-title">NITHISHKUMAR THANGAVELU</h1>
+          <p class="hero-subtitle">AI Data Annotator | Computer Vision &amp; NLP Dataset QA Specialist</p>
+
+          <p class="hero-bio">
+            Detail-oriented AI Data Operations &amp; Quality Assurance Specialist experienced in preparing high-precision training datasets for Computer Vision, Natural Language Processing (NLP), and Large Language Models (LLMs). Skilled in <strong>CVAT</strong> and <strong>Encord</strong> workflows, multi-modal annotation, strict SOP compliance, PII entity auditing, and bilingual (English/Tamil) text normalization—consistently delivering <strong>98%+ QA acceptance accuracy</strong>.
+          </p>
+
+          <div class="hero-cta-group no-print">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nithishkumar8940111@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <span>✉ Compose in Gmail</span>
+            </a>
+
+            <button type="button" onclick="copyEmail()" class="btn-secondary">
+              <span>📋 Copy Email</span>
+            </button>
+
+            <a href="https://www.linkedin.com/in/nithishkumar-t-75a775248/" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <span>LinkedIn ↗</span>
+            </a>
+
+            <a href="https://github.com/nithishkumar8940111-dev" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <span>GitHub ↗</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="metrics-card" aria-label="Quality Assurance Benchmarks">
+          <div class="metrics-header">
+            <span>QA_BENCHMARK_SUMMARY.JSON</span>
+            <span>STATUS: VERIFIED</span>
+          </div>
+          <div class="metrics-grid">
+            <div class="metric-box">
+              <div class="metric-val">98.5%+</div>
+              <div class="metric-label">QA Acceptance &amp; IoU Precision</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">4+ Tools</div>
+              <div class="metric-label">CVAT, Encord, Label Studio &amp; Labelbox</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">EN / TA</div>
+              <div class="metric-label">Bilingual ASR &amp; Text Normalization</div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-val">3 Modalities</div>
+              <div class="metric-label">Vision, HTML/PII NLP &amp; RLHF Eval</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ==================== CORE TECHNICAL STACK ==================== -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">01 // Technical Capabilities</p>
+            <h2 class="section-title">Core Technical Stack &amp; Competencies</h2>
+            <p class="section-desc">Production-ready annotation tooling, strict guideline literacy, and quantitative dataset auditing.</p>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🛠️</div>
+            <h3>Annotation Platforms</h3>
+            <div class="tag-list">
+              <span class="tag">CVAT</span>
+              <span class="tag">Encord</span>
+              <span class="tag">Label Studio</span>
+              <span class="tag">Labelbox</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">👁️</div>
+            <h3>Computer Vision Tasks</h3>
+            <div class="tag-list">
+              <span class="tag">2D Bounding Boxes</span>
+              <span class="tag">Polygon Segmentation</span>
+              <span class="tag">Keypoint Tracking</span>
+              <span class="tag">Occlusion Handling</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">🧠</div>
+            <h3>NLP &amp; LLM Evaluation</h3>
+            <div class="tag-list">
+              <span class="tag">PII Span Tagging</span>
+              <span class="tag">HTML/Text Redaction</span>
+              <span class="tag">RLHF Ranking</span>
+              <span class="tag">EN/TA Normalization</span>
+            </div>
+          </article>
+
+          <article class="skill-card">
+            <div class="skill-icon" aria-hidden="true">📊</div>
+            <h3>Data Formats &amp; QA</h3>
+            <div class="tag-list">
+              <span class="tag">COCO JSON</span>
+              <span class="tag">YOLO Format</span>
+              <span class="tag">IoU Auditing</span>
+              <span class="tag">IAA / Cohen's Kappa</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== FEATURED PORTFOLIO PROJECTS ==================== -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">02 // Verifiable Sample Work</p>
+            <h2 class="section-title">Featured QA &amp; Annotation Projects</h2>
+            <p class="section-desc">Filter by domain and inspect sample JSON outputs, QA audit diffs, and bilingual normalization tables.</p>
+          </div>
+
+          <div class="filter-bar no-print" role="tablist" aria-label="Filter projects by category">
+            <button type="button" class="filter-btn active" data-filter="all">All Projects (3)</button>
+            <button type="button" class="filter-btn" data-filter="vision">Computer Vision</button>
+            <button type="button" class="filter-btn" data-filter="nlp">NLP &amp; PII</button>
+            <button type="button" class="filter-btn" data-filter="speech">Bilingual Speech</button>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card" data-category="vision">
+            <div>
+              <div class="project-top">
+                <span class="project-cat">Computer Vision • CVAT</span>
+                <span class="project-kpi">98.5%+ IoU</span>
+              </div>
+              <h3>Autonomous Driving Multi-Object Detection &amp; Occlusion QA</h3>
+              <ul class="project-meta">
+                <li><strong>Dataset:</strong> 100 urban traffic frames sourced from open public street-view imagery.</li>
+                <li><strong>Scope:</strong> Annotated vehicles, pedestrians, traffic signs, and two-wheelers using tight 2D bounding boxes and polygon masks in <strong>CVAT</strong>, strictly enforcing multi-part occlusion rules.</li>
+                <li><strong>Deliverable:</strong> Audited AI pre-labels, corrected edge-bleed errors to achieve <strong>98.5%+ IoU precision</strong>, and exported clean <strong>COCO JSON</strong> annotations with an edge-case SOP guide.</li>
+              </ul>
+            </div>
+            <div class="project-footer no-print">
+              <button type="button" class="artifact-btn" onclick="openArtifact('vision')">
+                <span>🔍 Inspect COCO JSON &amp; QA Sample</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card" data-category="nlp">
+            <div>
+              <div class="project-top">
+                <span class="project-cat">NLP &amp; PII QA • HTML</span>
+                <span class="project-kpi">0% Boundary Drift</span>
+              </div>
+              <h3>HTML Document PII Redaction &amp; Span Precision Audit</h3>
+              <ul class="project-meta">
+                <li><strong>Dataset:</strong> 150 unstructured HTML support logs and semi-structured customer records.</li>
+                <li><strong>Scope:</strong> Identified and tagged <code>[PERSON]</code>, <code>[PHONE]</code>, <code>[EMAIL]</code>, and <code>[ID]</code> entities while auditing peer annotations for partial spans, missed nested tags, and punctuation boundary errors.</li>
+                <li><strong>Deliverable:</strong> Documented recurring boundary edge cases and reduced false-negative entity misses across the sample batch.</li>
+              </ul>
+            </div>
+            <div class="project-footer no-print">
+              <button type="button" class="artifact-btn" onclick="openArtifact('nlp')">
+                <span>🔍 Inspect HTML PII QA Diff</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card" data-category="speech">
+            <div>
+              <div class="project-top">
+                <span class="project-cat">Bilingual ASR • EN / TA</span>
+                <span class="project-kpi">100% Format Sync</span>
+              </div>
+              <h3>Bilingual Speech-to-Text Digit Normalization (English &amp; Tamil)</h3>
+              <ul class="project-meta">
+                <li><strong>Dataset:</strong> 200+ conversational customer-service utterances containing phone numbers, currency, and numeric sequences.</li>
+                <li><strong>Scope:</strong> Structured standardized spoken-number groupings pairing English spoken digits with native <strong>Tamil script</strong> transcriptions for ASR model training.</li>
+                <li><strong>Deliverable:</strong> Built a validation checklist ensuring zero formatting drift across numeric and currency patterns.</li>
+              </ul>
+            </div>
+            <div class="project-footer no-print">
+              <button type="button" class="artifact-btn" onclick="openArtifact('speech')">
+                <span>🔍 Inspect EN/TA Dataset Table</span>
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== QA METHODOLOGY ==================== -->
+    <section id="methodology" class="section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <p class="section-kicker">03 // Standard Operating Discipline</p>
+            <h2 class="section-title">Quality Assurance Methodology</h2>
+            <p class="section-desc">A repeatable three-stage inspection workflow built to maximize Inter-Annotator Agreement (IAA).</p>
+          </div>
+        </div>
+
+        <div class="method-grid">
+          <article class="method-card">
+            <span class="step-num">01</span>
+            <h3>Guideline-First Execution</h3>
+            <p>Break down project SOPs into concrete edge-case rules—such as occlusion thresholds, span boundaries, and normalization formats—before labeling the first frame or token.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="step-num">02</span>
+            <h3>Pre-Label Verification</h3>
+            <p>Treat model-generated pre-labels as rough drafts—inspect every polygon vertex, bounding box edge, and character offset for subtle drift rather than blindly accepting predictions.</p>
+          </article>
+
+          <article class="method-card">
+            <span class="step-num">03</span>
+            <h3>Edge-Case Escalation</h3>
+            <p>Flag ambiguous samples with clear, reproducible audit notes rather than guessing, protecting team-wide Cohen's Kappa / IAA scores and strengthening golden benchmark sets.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Ready to Elevate Your AI Training Data Quality?</h2>
+          <p>
+            Available for AI Data Annotator, Dataset QA Specialist, RLHF Evaluator, and Bilingual (English/Tamil) Annotation roles. Reach out directly via Gmail or connect on LinkedIn and GitHub.
+          </p>
+
+          <div class="contact-actions no-print">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nithishkumar8940111@gmail.com" target="_blank" rel="noopener noreferrer" class="btn-gmail">
+              <span>✉ Open in Gmail (nithishkumar8940111@gmail.com)</span>
+            </a>
+
+            <button type="button" onclick="copyEmail()" class="btn-glass">
+              <span>📋 Copy Email Address</span>
+            </button>
+
+            <a href="https://www.linkedin.com/in/nithishkumar-t-75a775248/" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <span>LinkedIn Profile ↗</span>
+            </a>
+
+            <a href="https://github.com/nithishkumar8940111-dev" target="_blank" rel="noopener noreferrer" class="btn-glass">
+              <span>GitHub Profile ↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-title">&copy; <span id="currentYear">2026</span> Nithishkumar Thangavelu. All rights reserved.</p>
+        <p class="mono" style="font-size: 0.76rem; margin-top: 0.2rem;">Tamil Nadu, India &bull; AI Data Annotation &amp; QA Portfolio</p>
+      </div>
+
+      <div class="footer-links no-print">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=nithishkumar8940111@gmail.com" target="_blank" rel="noopener noreferrer">
+          nithishkumar8940111@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/nithishkumar-t-75a775248/" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+        <a href="https://github.com/nithishkumar8940111-dev" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+        <a href="#top" class="top-link">Back to Top &uarr;</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== ARTIFACT PREVIEW MODAL ==================== -->
+  <div id="artifactModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="handleBackdropClick(event)">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 id="modalTitle">Sample QA Artifact</h3>
+        <button type="button" class="modal-close" onclick="closeArtifact()" aria-label="Close modal">&times;</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ==================== TOAST & CLIPBOARD FALLBACK ==================== -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <textarea id="clipboardFallback" class="sr-only" aria-hidden="true">nithishkumar8940111@gmail.com</textarea>
+
+  <script>
+    // 1. Ensure footer copyright year is at least 2026
+    document.getElementById('currentYear').textContent = Math.max(2026, new Date().getFullYear());
+
+    // 2. Theme Toggle (Light / Dark)
+    const rootEl = document.documentElement;
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function applyTheme(theme) {
+      rootEl.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light';
+      } else {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark';
+      }
+      try {
+        localStorage.setItem('nt_portfolio_theme', theme);
+      } catch (e) {}
+    }
+
+    (function initTheme() {
+      let saved = null;
+      try {
+        saved = localStorage.getItem('nt_portfolio_theme');
+      } catch (e) {}
+      applyTheme(saved === 'light' ? 'light' : 'dark');
+    })();
+
+    themeToggleBtn.addEventListener('click', function () {
+      const current = rootEl.getAttribute('data-theme');
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
+
+    // 3. Mobile Navigation Drawer
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+
+    mobileMenuBtn.addEventListener('click', function () {
+      const isOpen = mobileDrawer.classList.toggle('open');
+      mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    function closeMobileMenu() {
+      mobileDrawer.classList.remove('open');
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    // 4. Interactive Project Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const selected = btn.getAttribute('data-filter');
+
+        filterButtons.forEach(function (b) {
+          b.classList.remove('active');
+        });
+        btn.classList.add('active');
+
+        projectCards.forEach(function (card) {
+          const cat = card.getAttribute('data-category');
+          if (selected === 'all' || cat === selected) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // 5. Inspectable Sample Artifact Modal Data
+    const artifacts = {
+      vision: {
+        title: 'CVAT Export Sample — COCO JSON & Occlusion SOP Rule',
+        html: `
+          <p style="margin-bottom:0.85rem;color:var(--text-secondary);">
+            <strong>QA Rule Enforced:</strong> Single continuous bounding box across foreground pole occlusion; tight pixel boundaries without background padding (IoU &ge; 0.985).
+          </p>
+          <div class="code-block">{
+  "image": {
+    "id": 42,
+    "file_name": "chennai_arterial_0042.jpg",
+    "width": 1920,
+    "height": 1080
+  },
+  "annotations": [
+    {
+      "id": 108,
+      "image_id": 42,
+      "category_id": 3,
+      "category_name": "car",
+      "bbox": [412.5, 530.0, 348.0, 164.5],
+      "area": 57246.0,
+      "iscrowd": 0,
+      "attributes": {
+        "occluded": true,
+        "occlusion_type": "foreground_pole_split",
+        "qa_status": "approved",
+        "iou_score": 0.991
+      }
+    }
+  ]
+}</div>
+        `
+      },
+      nlp: {
+        title: 'HTML PII Span Tagging — QA Audit Diff Log',
+        html: `
+          <p style="margin-bottom:0.85rem;color:var(--text-secondary);">
+            <strong>SOP Rule:</strong> Exclude honorifics (<code>Dr.</code>, <code>Mr.</code>) and trailing sentence punctuation from <code>[PERSON]</code> and <code>[PHONE]</code> entity spans.
+          </p>
+          <div class="diff-box">
+            <div class="diff-bad">
+              <strong>&times; Rejected Annotator Span (Boundary Errors):</strong><br/>
+              &lt;p&gt;Escalate ticket to &lt;PERSON&gt;Dr. Ramesh Kumar&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98400-12345.&lt;/PHONE&gt;&lt;/p&gt;
+            </div>
+            <div class="diff-good">
+              <strong>&#10003; QA-Approved Gold Span (Exact Character Offsets):</strong><br/>
+              &lt;p&gt;Escalate ticket to Dr. &lt;PERSON&gt;Ramesh Kumar&lt;/PERSON&gt; at &lt;PHONE&gt;+91-98400-12345&lt;/PHONE&gt;.&lt;/p&gt;
+            </div>
+          </div>
+        `
+      },
+      speech: {
+        title: 'Bilingual ASR Digit Normalization (English & Tamil)',
+        html: `
+          <p style="margin-bottom:0.85rem;color:var(--text-secondary);">
+            <strong>Normalization Standard:</strong> Spoken numeric sequences paired with standardized Tamil script &amp; canonical digit groups for ASR training.
+          </p>
+          <div style="overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Raw Spoken Utterance</th>
+                  <th>Tamil Script Transcript</th>
+                  <th>Normalized Target</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>"My number is nine eight four zero..."</td>
+                  <td>என் எண் ஒன்பது எட்டு நான்கு பூஜ்ஜியம்...</td>
+                  <td class="mono">9840-XXXXXX</td>
+                </tr>
+                <tr>
+                  <td>"Pay rupees four hundred fifty only"</td>
+                  <td>நானூற்று ஐம்பது ரூபாய் செலுத்தவும்</td>
+                  <td class="mono">&#8377;450</td>
+                </tr>
+                <tr>
+                  <td>"Order ID two zero two six eight nine"</td>
+                  <td>ஆர்டர் எண் இரண்டு பூஜ்ஜியம் இரண்டு ஆறு எட்டு ஒன்பது</td>
+                  <td class="mono">ORD-202689</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        `
+      }
+    };
+
+    const modalEl = document.getElementById('artifactModal');
+    const modalTitleEl = document.getElementById('modalTitle');
+    const modalBodyEl = document.getElementById('modalBody');
+
+    function openArtifact(key) {
+      const item = artifacts[key];
+      if (!item) return;
+      modalTitleEl.textContent = item.title;
+      modalBodyEl.innerHTML = item.html;
+      modalEl.classList.add('open');
+    }
+
+    function closeArtifact() {
+      modalEl.classList.remove('open');
+    }
+
+    function handleBackdropClick(event) {
+      if (event.target === modalEl) {
+        closeArtifact();
+      }
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && modalEl.classList.contains('open')) {
+        closeArtifact();
+      }
+    });
+
+    // 6. One-Click Email Copy with Toast Feedback
+    let toastTimer = null;
+    function showToast(message) {
+      const toastEl = document.getElementById('toast');
+      toastEl.textContent = message;
+      toastEl.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toastEl.classList.remove('show');
+      }, 3000);
+    }
+
+    function copyEmail() {
+      const email = 'nithishkumar8940111@gmail.com';
+      const fallbackEl = document.getElementById('clipboardFallback');
+      fallbackEl.value = email;
+      fallbackEl.classList.remove('sr-only');
+      fallbackEl.select();
+      fallbackEl.setSelectionRange(0, 99999);
+      try {
+        document.execCommand('copy');
+        showToast('Copied to clipboard: ' + email);
+      } catch (err) {
+        showToast('Email: ' + email);
+      }
+      fallbackEl.classList.add('sr-only');
+    }
+  </script>
+</body>
+</html>
