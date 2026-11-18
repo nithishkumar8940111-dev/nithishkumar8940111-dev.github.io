@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nithishkumar Thangavelu — Embodied AI &amp; Robotics Data Specialist | Dataset QA Portfolio</title>
+  <title>Nithishkumar Thangavelu — Embodied AI, Robotics Data Operations &amp; Dataset QA Portfolio</title>
   <style>
     /* ==================== CSS VARIABLES & THEME TOKENS ==================== */
     :root {
@@ -19,6 +19,8 @@
       --accent-hover: #047857;
       --accent-soft: rgba(5, 150, 105, 0.1);
       --accent-border: rgba(5, 150, 105, 0.28);
+      --indigo: #4f46e5;
+      --indigo-soft: rgba(79, 70, 229, 0.1);
       --sky: #0284c7;
       --sky-soft: rgba(2, 132, 199, 0.1);
       --violet: #7c3aed;
@@ -49,6 +51,8 @@
       --accent-hover: #34d399;
       --accent-soft: rgba(16, 185, 129, 0.12);
       --accent-border: rgba(16, 185, 129, 0.32);
+      --indigo: #818cf8;
+      --indigo-soft: rgba(129, 140, 248, 0.14);
       --sky: #38bdf8;
       --sky-soft: rgba(56, 189, 248, 0.12);
       --violet: #a78bfa;
@@ -288,7 +292,7 @@
     }
 
     .hero-summary {
-      max-width: 820px;
+      max-width: 840px;
       font-size: 1.01rem;
       color: var(--text-muted);
       margin-bottom: 26px;
@@ -567,6 +571,11 @@
       padding: 4px 9px;
       border-radius: 6px;
       margin-bottom: 12px;
+    }
+
+    .cat-temporal {
+      background: var(--indigo-soft);
+      color: var(--indigo);
     }
 
     .cat-robotics {
@@ -908,7 +917,7 @@
       position: fixed;
       inset: 0;
       z-index: 60;
-      background: rgba(2, 6, 23, 0.74);
+      background: rgba(2, 6, 23, 0.78);
       display: none;
       align-items: center;
       justify-content: center;
@@ -925,7 +934,7 @@
       border: 1px solid var(--border-strong);
       border-radius: var(--radius-xl);
       width: 100%;
-      max-width: 780px;
+      max-width: 840px;
       max-height: 88vh;
       display: flex;
       flex-direction: column;
@@ -1003,12 +1012,12 @@
     .asr-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.84rem;
+      font-size: 0.82rem;
     }
 
     .asr-table th, .asr-table td {
       border: 1px solid var(--border);
-      padding: 10px 12px;
+      padding: 9px 11px;
       text-align: left;
       vertical-align: top;
     }
@@ -1016,6 +1025,28 @@
     .asr-table th {
       background: var(--bg-subtle);
       font-weight: 700;
+    }
+
+    .decision-pill {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    .dec-same {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid var(--accent-border);
+    }
+
+    .dec-diff {
+      background: var(--amber-soft);
+      color: var(--amber);
+      border: 1px solid rgba(217, 119, 6, 0.32);
     }
 
     .rlhf-card {
@@ -1141,8 +1172,8 @@
 
       <div class="nav-actions no-print">
         <button type="button" class="icon-btn" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle color theme">
-          <span id="themeIcon">🌙</span>
-          <span id="themeLabel">Dark</span>
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel">Light</span>
         </button>
         <button type="button" class="icon-btn" onclick="window.print()" title="Save or Print as PDF Resume">
           🖨️ Print / PDF
@@ -1173,14 +1204,14 @@
           Available for Embodied AI, Robotics Data Ops &amp; Dataset QA Roles • Coimbatore, TN
         </span>
         <span class="pill">
-          📍 Coimbatore, Tamil Nadu, India (Open to On-Site, Hybrid &amp; Remote)
+          📍 Coimbatore, Tamil Nadu, India (On-Site, Hybrid &amp; Remote)
         </span>
       </div>
 
       <h1>NITHISHKUMAR THANGAVELU</h1>
-      <p class="hero-subtitle">Embodied AI &amp; Robotics Data Specialist | Multimodal Video, Trajectory RLHF &amp; Dataset QA</p>
+      <p class="hero-subtitle">Embodied AI, Robotics Data Operations &amp; Multimodal Dataset QA Specialist</p>
       <p class="hero-summary">
-        AI Data Operations &amp; Quality Assurance Specialist experienced in preparing and auditing datasets for <strong>Vision-Language-Action (VLA)</strong> robotics models, Computer Vision, and NLP pipelines at <strong>Objectways Technology</strong>. Skilled in dense human household action captioning, VLM auto-caption hallucination auditing, frame-level temporal action segmentation across multi-camera <code>.mcap</code> teleoperation episodes, object/surface affordance tagging, and <strong>Encord Trajectory Preference RLHF</strong> evaluations across 5 evidence-backed axes—consistently maintaining a <strong>98.5%+ QA acceptance rate</strong>.
+        AI Data Operations &amp; Quality Assurance Specialist experienced in preparing and auditing datasets for <strong>Vision-Language-Action (VLA)</strong> robotics models, Egocentric Video understanding, Computer Vision, and NLP pipelines at <strong>Objectways Technology</strong>. Skilled in dense human household action captioning, VLM auto-caption hallucination auditing, frame-accurate temporal action segmentation across multi-camera <code>.mcap</code> teleoperation episodes, <strong>Egocentric Video Temporal Boundary QA (Segment Merge Review)</strong>, and <strong>Encord Trajectory Preference RLHF</strong> evaluations across 5 evidence-backed axes—consistently maintaining a <strong>98.5%+ QA acceptance rate</strong>.
       </p>
 
       <div class="hero-actions no-print">
@@ -1214,7 +1245,7 @@
         </div>
         <div class="metric-card">
           <div class="metric-value">VLA + CV</div>
-          <div class="metric-label">Multimodal AI Datasets</div>
+          <div class="metric-label">Egocentric &amp; Multimodal QA</div>
         </div>
       </div>
     </section>
@@ -1226,18 +1257,18 @@
           <div class="section-kicker">Core Competencies</div>
           <h2 class="section-title">Technical Stack &amp; QA Methodology</h2>
         </div>
-        <p class="section-desc">Specialized tooling, robotics telemetry schemas, and quality-assurance rubrics for Embodied AI, Vision, and NLP.</p>
+        <p class="section-desc">Specialized tooling, robotics telemetry schemas, and quality-assurance rubrics for Embodied AI, Egocentric Video, Vision, and NLP.</p>
       </div>
 
       <div class="skills-grid">
         <div class="skill-card">
-          <h3>🤖 Embodied AI &amp; Robotics Video</h3>
+          <h3>🤖 Embodied AI &amp; Egocentric Video QA</h3>
           <div class="tag-row">
+            <span class="tech-tag">Segment Merge Review (SAME vs. DIFFERENT)</span>
             <span class="tech-tag">Temporal Action Segmentation</span>
             <span class="tech-tag">pick / transport / place / hold / push / idle</span>
             <span class="tech-tag">Multi-Camera .mcap Logs</span>
             <span class="tech-tag">Object, Location &amp; Surface Tagging</span>
-            <span class="tech-tag">Manipulation Quality Labeling</span>
           </div>
         </div>
 
@@ -1248,7 +1279,7 @@
             <span class="tech-tag">VLM Auto-Caption Auditing</span>
             <span class="tech-tag">Encord Trajectory Preference (v1.2)</span>
             <span class="tech-tag">Chronological A vs. B Narratives</span>
-            <span class="tech-tag">5-Axis Evidence Rubrics</span>
+            <span class="tech-tag">5-Axis + Custom Edge-Case Rubrics</span>
           </div>
         </div>
 
@@ -1268,7 +1299,7 @@
           <h3>📊 Data Formats &amp; QA Metrics</h3>
           <div class="tag-row">
             <span class="tech-tag">JSON</span>
-            <span class="tech-tag">COCO</span>
+            <span class="tech-tag">COCO 1.0</span>
             <span class="tech-tag">YOLO</span>
             <span class="tech-tag">.mcap Telemetry Validation</span>
             <span class="tech-tag">IoU (Intersection over Union)</span>
@@ -1283,12 +1314,12 @@
           <div class="method-step">
             <div class="method-num">STEP 01</div>
             <h4>Guideline-First Execution</h4>
-            <p>Deconstruct project SOPs into concrete frame-boundary, affordance, and occlusion rules before labeling.</p>
+            <p>Deconstruct project SOPs into concrete atomic-action boundaries, affordance, and occlusion rules before labeling.</p>
           </div>
           <div class="method-step">
             <div class="method-num">STEP 02</div>
-            <h4>Frame &amp; Span Precision</h4>
-            <p>Audit VLM auto-captions and model pre-labels against raw visual frames—catching hand swaps, contact drift, and boundary errors.</p>
+            <h4>Frame &amp; Boundary Precision</h4>
+            <p>Audit VLM auto-captions, automated video cuts, and model pre-labels against raw visual frames—catching hand swaps and boundary drift.</p>
           </div>
           <div class="method-step">
             <div class="method-num">STEP 03</div>
@@ -1314,6 +1345,7 @@
 
         <div class="filter-bar no-print" role="group" aria-label="Filter projects by category">
           <button type="button" class="filter-btn active" onclick="filterProjects('all', this)">All</button>
+          <button type="button" class="filter-btn" onclick="filterProjects('temporal', this)">Temporal QA</button>
           <button type="button" class="filter-btn" onclick="filterProjects('robotics', this)">Robotics &amp; VLA</button>
           <button type="button" class="filter-btn" onclick="filterProjects('rlhf', this)">RLHF Evaluation</button>
           <button type="button" class="filter-btn" onclick="filterProjects('cv', this)">Computer Vision</button>
@@ -1322,13 +1354,30 @@
       </div>
 
       <div class="projects-grid">
-        <!-- Project 1 -->
+        <!-- Project 1: Egocentric Video Temporal Boundary QA (Segment Merge Review) -->
+        <article class="project-card" data-category="temporal">
+          <div>
+            <span class="project-cat cat-temporal">Temporal QA • Encord Segment Merge</span>
+            <h3>Egocentric Video Temporal Boundary QA (Segment Merge Review)</h3>
+            <p>
+              Audited over-segmented first-person household video cuts in <strong>Encord</strong> (<code>SAME</code> vs. <code>DIFFERENT</code> boundary decisions) to consolidate fragmented micro-steps (<code>reach</code> + <code>grasp</code> + <code>lift</code>) into single atomic actions while isolating locomotion, <code>&ge;1s</code> pauses, area shifts in repetitive wiping/mopping, and sequential bimanual hand transitions.
+            </p>
+            <div class="project-metric">
+              Deliverable: Atomic single-action boundary dataset eliminating temporal over-segmentation across long-horizon egocentric episodes.
+            </div>
+          </div>
+          <button type="button" class="inspect-btn no-print" onclick="openArtifact('segment_merge')">
+            🔍 Inspect Sample Artifact (8-Pair QA Decision Table)
+          </button>
+        </article>
+
+        <!-- Project 2: Bimanual Teleoperation Action Segmentation (.mcap Telemetry) -->
         <article class="project-card" data-category="robotics">
           <div>
-            <span class="project-cat cat-robotics">Robotics &amp; VLA • Temporal Segmentation</span>
-            <h3>Bimanual Teleoperation Temporal Action Segmentation &amp; Quality QA</h3>
+            <span class="project-cat cat-robotics">Robotics &amp; VLA • .mcap Telemetry</span>
+            <h3>Bimanual Teleoperation Action Segmentation (.mcap Telemetry)</h3>
             <p>
-              Performed frame-accurate atomic action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) across synchronized multi-camera (<code>cam-0</code>, <code>cam-1</code>) manipulation episodes, pairing left/right gripper sub-tasks with <code>Good</code>/<code>Bad</code> trajectory quality spans.
+              Performed frame-accurate atomic action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) across synchronized multi-camera (<code>cam-0</code>, <code>cam-1</code>) 12,000+ frame manipulation episodes, pairing left/right gripper sub-tasks with <code>Good</code>/<code>Bad</code> trajectory quality spans.
             </p>
             <div class="project-metric">
               Deliverable: Zero-gap frame interval JSON export validated for left/right bimanual synchronization.
@@ -1339,16 +1388,16 @@
           </button>
         </article>
 
-        <!-- Project 2 -->
+        <!-- Project 3: Household Action Captioning & VLM Hallucination Audit -->
         <article class="project-card" data-category="robotics">
           <div>
             <span class="project-cat cat-robotics">Robotics &amp; VLA • Caption &amp; Affordance QA</span>
-            <h3>Household Manipulation Dense Captioning &amp; Auto-Caption Audit</h3>
+            <h3>Household Action Captioning &amp; VLM Hallucination Audit</h3>
             <p>
-              Authored fine-grained step-by-step action captions specifying actor hand, target object, spatial location, and interaction surface for robot policy training, while auditing VLM auto-generated captions to eliminate hand-swap and contact hallucinations.
+              Authored dense, step-by-step manipulation captions specifying actor hand, target object identity, spatial location, and interaction surface for robot policy training, while auditing auto-generated VLM captions to eliminate left/right hand swaps and false contact hallucinations.
             </p>
             <div class="project-metric">
-              Deliverable: Side-by-side VLM error audit rubric &amp; grounded object/surface affordance metadata.
+              Deliverable: Side-by-side VLM hallucination audit table &amp; grounded object/surface affordance metadata.
             </div>
           </div>
           <button type="button" class="inspect-btn no-print" onclick="openArtifact('robotics_cap')">
@@ -1356,16 +1405,16 @@
           </button>
         </article>
 
-        <!-- Project 3 -->
+        <!-- Project 4: Multi-Axis Robot Trajectory Preference Evaluation -->
         <article class="project-card" data-category="rlhf">
           <div>
             <span class="project-cat cat-rlhf">RLHF Evaluation • Encord 5-Axis Rubric</span>
-            <h3>Robot Trajectory Preference RLHF Benchmark (5-Axis Rubric)</h3>
+            <h3>Multi-Axis Robot Trajectory Preference Evaluation</h3>
             <p>
-              Conducted side-by-side policy evaluations comparing Robot Attempt A vs. Attempt B—authoring chronological action narratives followed by concrete, evidence-tied justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code>.
+              Conducted side-by-side multi-view comparisons of Robot Attempt A vs. Attempt B—authoring separated chronological action narrations (<code>description</code>) followed by timestamped evidence justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code> plus custom edge-case axes (<code>retry_after_failure</code>, <code>scene_left_tidy</code>, <code>near_miss</code>).
             </p>
             <div class="project-metric">
-              Deliverable: Structured 5-axis trajectory evaluation log with edge-case &amp; extra-axis diagnostics.
+              Deliverable: Structured 5-axis + custom edge-case trajectory preference log for VLA reward modeling.
             </div>
           </div>
           <button type="button" class="inspect-btn no-print" onclick="openArtifact('rlhf')">
@@ -1373,13 +1422,13 @@
           </button>
         </article>
 
-        <!-- Project 4 -->
+        <!-- Project 5: Urban Multi-Object Detection & Occlusion QA (CVAT) -->
         <article class="project-card" data-category="cv">
           <div>
             <span class="project-cat cat-cv">Computer Vision • CVAT</span>
-            <h3>Autonomous Driving Multi-Object Detection &amp; Occlusion QA</h3>
+            <h3>Urban Multi-Object Detection &amp; Occlusion QA (CVAT)</h3>
             <p>
-              Annotated urban traffic street-view frames for vehicles, pedestrians, two-wheelers, and traffic signage using tight 2D bounding boxes and polygon masks in <strong>CVAT</strong>, strictly enforcing multi-part occlusion rules and exporting clean COCO JSON.
+              Annotated urban traffic street-view frames for vehicles, pedestrians, two-wheelers, and traffic signage using tight 2D bounding boxes and polygon masks in <strong>CVAT</strong>, strictly enforcing multi-part occlusion rules and exporting clean COCO 1.0 JSON.
             </p>
             <div class="project-metric">
               Deliverable: 98.5%+ IoU precision after auditing AI pre-labels &amp; occluded vehicle boundaries.
@@ -1390,13 +1439,13 @@
           </button>
         </article>
 
-        <!-- Project 5 -->
+        <!-- Project 6: HTML PII Span Precision Audit & Bilingual ASR Normalization -->
         <article class="project-card" data-category="nlp">
           <div>
             <span class="project-cat cat-nlp">NLP &amp; Speech • PII &amp; Bilingual ASR</span>
-            <h3>HTML PII Span Precision Audit &amp; Bilingual (English/Tamil) Normalization</h3>
+            <h3>HTML PII Span Precision Audit &amp; Bilingual ASR Normalization</h3>
             <p>
-              Audited unstructured HTML support logs for <code>[PERSON]</code>, <code>[PHONE]</code>, and <code>[EMAIL]</code> boundary precision (stripping honorifics and trailing punctuation) and structured English spoken-digit patterns with native <strong>Tamil script</strong> ASR transcripts.
+              Audited unstructured HTML support logs for <code>[PERSON]</code>, <code>[PHONE]</code>, and <code>[EMAIL]</code> character-exact boundary precision (stripping honorifics and trailing punctuation) and structured English spoken-digit patterns with native <strong>Tamil script</strong> ASR transcripts.
             </p>
             <div class="project-metric">
               Deliverable: HTML span QA diff log &amp; standardized code-mixed English–Tamil numeric transcripts.
@@ -1416,7 +1465,7 @@
           <div class="section-kicker">Career History</div>
           <h2 class="section-title">Work Experience</h2>
         </div>
-        <p class="section-desc">Industry experience delivering Embodied AI, Robotics, Computer Vision, and NLP datasets alongside front-end engineering.</p>
+        <p class="section-desc">Industry experience delivering Embodied AI, Egocentric Video, Robotics, Computer Vision, and NLP datasets alongside front-end engineering.</p>
       </div>
 
       <div class="timeline">
@@ -1424,7 +1473,7 @@
         <article class="exp-card featured">
           <div class="exp-top">
             <div>
-              <h3 class="exp-role">Data Analyst (AI Data Operations &amp; Robotics Dataset QA)</h3>
+              <h3 class="exp-role">Data Analyst (Embodied AI, Robotics Teleoperation &amp; Dataset QA)</h3>
               <div class="exp-company">Objectways Technology</div>
             </div>
             <div class="exp-meta">
@@ -1433,15 +1482,16 @@
             </div>
           </div>
           <ul class="exp-list">
-            <li>Author dense, step-by-step household manipulation captions and audit VLM auto-generated video descriptions—correcting left/right hand confusion, premature grasp hallucinations, and missed interaction surfaces to train Vision-Language-Action (VLA) robotics models.</li>
-            <li>Execute frame-level temporal action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) and manipulation quality labeling across 12,000+ frame multi-camera <code>.mcap</code> bimanual teleoperation episodes.</li>
-            <li>Tag object identities, spatial locations, and target interaction surfaces to ground robotic affordance and scene-understanding pipelines.</li>
-            <li>Perform side-by-side Robot Trajectory Preference RLHF evaluations in <strong>Encord</strong> (v1.2 SOP), writing chronological A/B action descriptions and evidence-backed justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code>.</li>
-            <li>Deliver high-precision 2D bounding boxes and polygon segmentation masks in <strong>CVAT</strong> and <strong>Encord</strong> (98.5%+ QA acceptance), alongside HTML PII entity span auditing and bilingual <strong>English–Tamil</strong> speech normalization.</li>
+            <li>Author dense human household action captions and audit auto-generated VLM captions—eliminating left/right hand confusion, premature grasp hallucinations, and missed interaction surfaces to train Vision-Language-Action (VLA) robotics models.</li>
+            <li>Execute frame-accurate temporal action segmentation (<code>pick</code>, <code>transport</code>, <code>place</code>, <code>hold</code>, <code>push</code>, <code>idle</code>) and manipulation quality labeling across 12,000+ frame multi-camera <code>.mcap</code> bimanual teleoperation episodes.</li>
+            <li>Conduct <strong>Egocentric Video Temporal Boundary QA (Segment Merge Review)</strong> in <strong>Encord</strong>—evaluating adjacent clip pairs (<code>SAME</code> vs. <code>DIFFERENT</code>) across atomic sub-steps, bimanual overlaps, locomotion transitions, repetitive area shifts, and <code>&ge;1s</code> pauses.</li>
+            <li>Perform 5-axis Robot Trajectory Preference RLHF evaluations in <strong>Encord</strong> (v1.2 SOP), authoring chronological A/B action narratives and evidence-backed justifications across <code>task_completion</code>, <code>quality</code>, <code>smoothness</code>, <code>speed_and_no_inefficiencies</code>, and <code>no_damage_to_object_or_environment</code> plus custom edge-case axes.</li>
+            <li>Deliver high-precision 2D bounding boxes and polygon masks in <strong>CVAT</strong> and <strong>Encord</strong> (98.5%+ QA acceptance), alongside HTML PII entity span auditing and bilingual <strong>English–Tamil</strong> speech normalization.</li>
           </ul>
           <div class="tag-row">
             <span class="tech-tag">Encord</span>
             <span class="tech-tag">CVAT</span>
+            <span class="tech-tag">Segment Merge QA</span>
             <span class="tech-tag">VLA Action Captioning</span>
             <span class="tech-tag">Temporal Segmentation (.mcap)</span>
             <span class="tech-tag">Trajectory RLHF (5-Axis)</span>
@@ -1463,7 +1513,7 @@
           </div>
           <ul class="exp-list">
             <li>Built responsive, mobile-first web interfaces and reusable UI components using semantic <strong>HTML5</strong>, modern <strong>CSS3</strong>, and vanilla <strong>JavaScript</strong>.</li>
-            <li>Performed cross-browser debugging, DOM structure cleanup, and accessibility improvements—developing deep fluency in HTML markup hierarchy directly leveraged in HTML PII span auditing.</li>
+            <li>Performed cross-browser debugging, DOM structure cleanup, and UI refinements—developing deep fluency in HTML markup hierarchy directly leveraged in HTML PII span auditing.</li>
             <li>Maintained clean, well-commented codebases following structured design specifications and peer QA checklists.</li>
           </ul>
           <div class="tag-row">
@@ -1523,7 +1573,7 @@
       <div class="contact-banner">
         <h2>Let’s Connect for Embodied AI &amp; Dataset QA Roles</h2>
         <p>
-          Hiring for Robotics Data Operations, VLA Multimodal Video Annotation, Trajectory RLHF Evaluation, or Dataset QA? Reach out directly via Gmail or connect on LinkedIn and GitHub.
+          Hiring for Robotics Data Operations, Egocentric Video Temporal QA, VLA Multimodal Annotation, Trajectory RLHF Evaluation, or Dataset QA? Reach out directly via Gmail or connect on LinkedIn and GitHub.
         </p>
 
         <div class="contact-actions no-print">
@@ -1587,7 +1637,7 @@
     // Ensure copyright year displays 2026+
     document.getElementById('currentYear').textContent = Math.max(2026, new Date().getFullYear());
 
-    // 1. Light / Dark Theme Toggle
+    // 1. Light / Dark Theme Toggle (defaults to sleek darkslate theme)
     function applyTheme(isDark) {
       const root = document.documentElement;
       const icon = document.getElementById('themeIcon');
@@ -1606,13 +1656,10 @@
     (function initTheme() {
       let saved = null;
       try { saved = localStorage.getItem('nt-portfolio-theme'); } catch (e) {}
-      if (saved === 'dark') {
-        applyTheme(true);
-      } else if (saved === 'light') {
+      if (saved === 'light') {
         applyTheme(false);
       } else {
-        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark);
+        applyTheme(true);
       }
     })();
 
@@ -1649,6 +1696,82 @@
 
     // 4. Inspectable NDA-Safe Synthetic Sample Artifacts
     const ARTIFACTS = {
+      segment_merge: {
+        title: 'Synthetic Sample — Egocentric Segment Merge QA Decision Table (8 Pairs)',
+        html:
+          '<p style="margin-bottom:12px;color:var(--text-muted);">' +
+          '<strong>QA Objective:</strong> Audit over-segmented automated cuts between adjacent first-person clips so each final segment captures exactly <strong>one atomic action</strong> (e.g., <em>pick up cup</em>, <em>wipe counter area</em>, <em>walk to sink</em>).' +
+          '</p>' +
+          '<table class="asr-table">' +
+          '  <thead>' +
+          '    <tr>' +
+          '      <th>#</th>' +
+          '      <th>Left Clip (Earlier)</th>' +
+          '      <th>Right Clip (Next)</th>' +
+          '      <th>Decision</th>' +
+          '      <th>Rule Applied &amp; QA Rationale</th>' +
+          '    </tr>' +
+          '  </thead>' +
+          '  <tbody>' +
+          '    <tr>' +
+          '      <td>1</td>' +
+          '      <td>Reaches toward ceramic mug on counter</td>' +
+          '      <td>Grasps handle and lifts mug clear</td>' +
+          '      <td><span class="decision-pill dec-same">SAME</span></td>' +
+          '      <td><strong>Steps Inside One Action:</strong> Reach + grasp + lift form a single atomic <em>pick up</em> action.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>2</td>' +
+          '      <td>Lifts laundry basket off bedroom floor</td>' +
+          '      <td>Walks across hallway toward washer</td>' +
+          '      <td><span class="decision-pill dec-diff">DIFFERENT</span></td>' +
+          '      <td><strong>Locomotion Boundary:</strong> Walking several steps to a new location starts its own <em>walk</em> segment.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>3</td>' +
+          '      <td>Wipes right corner of kitchen table</td>' +
+          '      <td>Lifts cloth and starts wiping center area</td>' +
+          '      <td><span class="decision-pill dec-diff">DIFFERENT</span></td>' +
+          '      <td><strong>Repetitive Motion Area Shift:</strong> Lifting cloth to start on a new surface patch starts a new segment.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>4</td>' +
+          '      <td>Left hand starts lifting apple from bowl</td>' +
+          '      <td>Right hand picks up orange while left is still lifting</td>' +
+          '      <td><span class="decision-pill dec-same">SAME</span></td>' +
+          '      <td><strong>Concurrent Bimanual Action:</strong> Second hand starts while first hand is mid-action; shares one segment.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>5</td>' +
+          '      <td>Right hand holds cup still; left hand idle</td>' +
+          '      <td>Right hand still holds cup; left hand opens drawer</td>' +
+          '      <td><span class="decision-pill dec-diff">DIFFERENT</span></td>' +
+          '      <td><strong>Resting/Holding Hand Rule:</strong> Holding still is passive; left hand opening drawer starts a new action.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>6</td>' +
+          '      <td>Sets glass down on drying mat</td>' +
+          '      <td>Both hands rest motionless at sides for 2.5s</td>' +
+          '      <td><span class="decision-pill dec-diff">DIFFERENT</span></td>' +
+          '      <td><strong>Pause Boundary (&ge;1s):</strong> Stationary pause of ~1 second or longer is isolated as its own segment.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>7</td>' +
+          '      <td>Reaches up toward upper pantry shelf</td>' +
+          '      <td>Takes one small step closer and grabs jar</td>' +
+          '      <td><span class="decision-pill dec-same">SAME</span></td>' +
+          '      <td><strong>Small Preparatory Move:</strong> A single step leading directly into a grasp belongs to the <em>pick up</em> action.</td>' +
+          '    </tr>' +
+          '    <tr>' +
+          '      <td>8</td>' +
+          '      <td>Washes hands under running sink faucet</td>' +
+          '      <td>Glances briefly over shoulder while still washing</td>' +
+          '      <td><span class="decision-pill dec-same">SAME</span></td>' +
+          '      <td><strong>Move Leading Nowhere:</strong> Head glance without stopping the primary hand action is not a new segment.</td>' +
+          '    </tr>' +
+          '  </tbody>' +
+          '</table>'
+      },
       robotics_seg: {
         title: 'Synthetic Sample — Bimanual Temporal Action Segmentation JSON',
         html:
@@ -1700,25 +1823,26 @@
           '</table>'
       },
       rlhf: {
-        title: 'Synthetic Sample — Encord 5-Axis Trajectory Preference Evaluation',
+        title: 'Synthetic Sample — Encord 5-Axis + Custom Axis Trajectory Preference Evaluation',
         html:
           '<div class="rlhf-card">' +
           '  <h4>Task Instruction &amp; Chronological Description (A vs. B)</h4>' +
           '  <p style="font-size:0.84rem;color:var(--text-muted);">' +
           '    <strong>Instruction:</strong> "Pick up the blue marker from the desk and place it upright inside the white pen holder."<br/><br/>' +
-          '    <strong>Chronological Narrative:</strong> Attempt A reaches toward the blue marker with steady motion, grasps the barrel on the first attempt, lifts it clear of the desk, and places it upright inside the white pen holder without touching nearby items. Attempt B approaches the marker with visible arm oscillation, misses its first grasp (knocking the marker 3 cm left), re-grasps on the second try, and drops the marker onto the desk beside the holder.' +
+          '    <strong>Chronological Narration (<code>description</code>):</strong> Attempt A reaches toward the blue marker at 2 s with steady motion, grasps the barrel on the first try at 4 s, lifts it clear of the desk, and places it upright inside the white pen holder at 8 s without touching nearby items. Attempt B approaches the marker with visible arm oscillation, misses its first grasp at 5 s (knocking the marker 3 cm left), retries and grasps it at 9 s, and drops the marker onto the desk beside the holder at 13 s.' +
           '  </p>' +
           '</div>' +
           '<ul class="rlhf-axes">' +
-          '  <li><strong>1. task_completion → A:</strong> Attempt A successfully placed the blue marker inside the white pen holder, whereas Attempt B left the marker lying on the desk outside the holder.</li>' +
-          '  <li><strong>2. quality → A:</strong> Attempt A secured a clean single-try grasp and upright placement, while Attempt B missed its initial grasp and failed to seat the marker in the container.</li>' +
+          '  <li><strong>1. task_completion → A:</strong> Attempt A successfully placed the blue marker inside the white pen holder at 8 s, whereas Attempt B left the marker lying on the desk outside the holder at 13 s.</li>' +
+          '  <li><strong>2. quality → A:</strong> Attempt A secured a clean single-try grasp and upright placement, while Attempt B missed its initial grasp at 5 s and failed to seat the marker in the container.</li>' +
           '  <li><strong>3. smoothness → A:</strong> Attempt A moved along a continuous, fluid path, whereas Attempt B exhibited noticeable arm oscillation and jerky stop-start corrections during approach.</li>' +
-          '  <li><strong>4. speed_and_no_inefficiencies → A:</strong> Attempt A completed the trajectory directly in one pass, while Attempt B wasted time re-positioning after its missed initial grasp.</li>' +
-          '  <li><strong>5. no_damage_to_object_or_environment → A:</strong> Attempt A avoided unintended contact, whereas Attempt B bumped and displaced the marker during its failed first grasp.</li>' +
+          '  <li><strong>4. speed_and_no_inefficiencies → A:</strong> Attempt A completed the trajectory directly in 8 s, while Attempt B wasted time re-positioning between 5 s and 9 s after its missed grasp.</li>' +
+          '  <li><strong>5. no_damage_to_object_or_environment → A:</strong> Attempt A avoided unintended contact, whereas Attempt B bumped and displaced the marker at 5 s and dropped it onto the desk at 13 s.</li>' +
+          '  <li><strong>6. Custom Edge-Case Axis (<code>retry_after_failure</code>) → B:</strong> Although Attempt B ultimately failed placement, it actively re-attempted grasping after missing at 5 s rather than stalling.</li>' +
           '</ul>'
       },
       cv: {
-        title: 'CVAT Computer Vision QA — Exported COCO JSON Sample',
+        title: 'CVAT Computer Vision QA — Exported COCO 1.0 JSON Sample',
         html:
           '<p style="margin-bottom:12px;color:var(--text-muted);">' +
           '<strong>QA Audit Rule:</strong> Single continuous bounding box enforced across a sedan occluded by a foreground streetlight pole (<code>occluded: true</code>), achieving <strong>99.1% IoU</strong> against golden ground truth.' +
